@@ -102,7 +102,7 @@ public class Post {
 		sb.append(" Likes - ");
 		// para acrescentar a data, é necessário ter uma
 		// instancia do SimpleDateFormat nesta classe também
-		sb.append(sdf.format(moment)+ "\n");
+		sb.append(sdf.format(moment) + "\n");
 		sb.append(content + "\n");
 		sb.append("Comments: \n");
 		// Texto de cada comentário associado ao post

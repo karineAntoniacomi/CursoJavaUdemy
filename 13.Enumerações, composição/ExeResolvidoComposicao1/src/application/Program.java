@@ -46,7 +46,7 @@ public class Program {
 		int n = sc.nextInt();
 		
 		// Contrato - for se repete ate instanciar e associar todos os contratos aos trabalhadores
-		for( int i =1; i<=n; i++) {
+		for(int i =1; i<=n; i++) {
 			System.out.println("Enter contract #" + i + " data:");
 			
 			System.out.print("Date (DD/MM/YYYY): ");
@@ -65,7 +65,6 @@ public class Program {
 			worker.addContract(contract);
 		}
 	
-		
 		// Calculo de valor
 		System.out.print("\nEnter month and year to calculate income (MM/YYYY): ");
 		String monthAndYear = sc.next();
