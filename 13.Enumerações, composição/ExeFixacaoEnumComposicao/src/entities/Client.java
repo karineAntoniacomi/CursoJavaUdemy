@@ -8,8 +8,9 @@ public class Client {
 	private String name;
 	private String email;
 	private Date birthDate;
-	
-	SimpleDateFormat sdf1 = new SimpleDateFormat("dd/MM/yyyy");
+
+	// static pois não é necessário criar uma nova instancia de sdf p/ cada cliente
+	private static SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 	
 	public Client() {
 	}
@@ -43,12 +44,5 @@ public class Client {
 	public void setBirthDate(Date birthDate) {
 		this.birthDate = birthDate;
 	}
-	
-	public String toString() {
-		StringBuilder sb = new StringBuilder();
 
-		sb.append("\nClient: " + name + " (" + sdf1.format(birthDate) + ") - " + email);
-		
-		return sb.toString();
-	}
 }

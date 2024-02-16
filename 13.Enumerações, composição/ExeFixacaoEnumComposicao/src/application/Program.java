@@ -2,7 +2,6 @@ package application;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.Locale;
 import java.util.Scanner;
@@ -10,6 +9,7 @@ import java.util.Scanner;
 import entities.Client;
 import entities.Order;
 import entities.OrderItem;
+import entities.Product;
 import entities.enums.OrderStatus;
 
 // Ler os dados de um pedido com N itens (N fornecido 
@@ -20,54 +20,57 @@ import entities.enums.OrderStatus;
 public class Program {
 
 	public static void main(String[] args) throws ParseException {
+		
 		Locale.setDefault(Locale.US);		
 		Scanner sc = new Scanner(System.in);
 		
-		SimpleDateFormat sdf1 = new SimpleDateFormat("dd/MM/yyyy");
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 		
 		// Client Data
 		System.out.println("Enter client data:");
 		System.out.print("Name: ");
-		String name = sc.nextLine();
+		String name = sc.nextLine();	
 		
 		System.out.print("Email: ");
 		String email = sc.next();
 		
-		sc.nextLine();
-		
 		System.out.print("Birth date (DD/MM/YYYY): ");
-		Date birthDate = sdf1.parse(sc.next());
+		Date birthDate = sdf.parse(sc.next());
 		
 		Client client = new Client(name, email, birthDate);
 				
 		// Order Data
 		System.out.println("Enter order data:");
 		System.out.print("Status: ");
-		OrderStatus os1 = OrderStatus.valueOf(sc.next());
+		// Função valueOf converte o string lido para o valor correspondente do Enum
+		OrderStatus status = OrderStatus.valueOf(sc.next());
+		
+		// Instância Order associado ao cliente
+		Order order = new Order(new Date(), status, client);
 		
 		System.out.print("How many items to this order? ");
 		int n = sc.nextInt();
 		
-		Order order = new Order();
 		for (int i = 1; i <= n; i++) {
 			System.out.println("Enter #"+ i +" item data:");
 			System.out.print("Product name: ");
-			String pName = sc.next();
-			
+			sc.nextLine();
+			String pName = sc.nextLine();			
 			System.out.print("Product price: ");
-			Double pPrice = sc.nextDouble();
-			
+			double pPrice = sc.nextDouble();
 			System.out.print("Quantity: ");
-			Integer pQuantity = sc.nextInt();
+			int pQuantity = sc.nextInt();
 		
-			order = new Order(new Date(), os1);
+			Product product = new Product(pName, pPrice);
 			
-			OrderItem orderItem = new OrderItem(pQuantity, pPrice);
+			// Intancia do Item de pedido associado ao produto
+			OrderItem it = new OrderItem(pQuantity, pPrice, product);
+			
+			// Adiciona o OrderItem dentro da lista de items do Pedido
+			order.addItem(it);
 		}
 
 		System.out.println(order);
-		
-		System.out.println(client);
 		
 		sc.close();
 	}

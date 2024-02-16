@@ -5,13 +5,18 @@ public class OrderItem {
 	private Integer quantity;
 	private Double price;
 	
+	// Composição entre Objetos OderItem e Product
+	// OrderItem contém uma referência para um produto
+	private Product product;
+	
 	public OrderItem() {		
 	}
 	
-	public OrderItem(Integer quantity, Double price) {
+	public OrderItem(Integer quantity, Double price, Product product) {
 		super();
 		this.quantity = quantity;
 		this.price = price;
+		this.product = product;
 	}
 
 	public Integer getQuantity() {
@@ -30,8 +35,26 @@ public class OrderItem {
 		this.price = price;
 	}
 	
-	// TODO: verificar 
+	public Product getProduct() {
+		return product;
+	}
+
+	public void setProduct(Product product) {
+		this.product = product;
+	}
+	  
 	public Double subTotal() {
-		return quantity * price;
+		return price * quantity; 
+	}
+	
+	@Override
+	public String toString() {
+		return getProduct().getName() 
+				+ ", $" 
+				+ String.format("%.2f", price)
+				+ ", Quantity: "
+				+ quantity
+				+ ", Subtotal: $"
+				+ String.format("%.2f", subTotal());
 	}
 }
