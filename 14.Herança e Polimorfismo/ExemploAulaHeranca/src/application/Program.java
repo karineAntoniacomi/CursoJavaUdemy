@@ -46,5 +46,21 @@ public class Program {
 			System.out.println("Update!");
 		}
 		
+		// Teste 
+		Account acc10 = new Account(1001, "Alex", 1000.0);
+		// saque de 200
+		acc10.withdraw(200.0);
+		System.out.println(acc10.getBalance()); // mostra saldo de 795 (incluindo a taxa de saque)
+		
+		// Teste SOBREPOSIÇÃO de método de saque na conta poupança / upcasting
+		Account acc11 = new SavingsAccount(1002, "Maria", 1000.0, 0.1);
+		acc11.withdraw(200.0);
+		System.out.println(acc11.getBalance());
+		
+		
+		// TESTE CHAMANDO A IMPLEMENTAÇÃO DA SUPERCLASSE COM A PALAVRA SUPER
+		Account acc12 = new BusinessAccount(1003, "Bob", 1000.0, 500.0);
+		acc12.withdraw(200.0);
+		System.out.println(acc12.getBalance()); // saldo será 793 pois além do desconto de 5 da superclasse, desconta mais 2
 	}
 }

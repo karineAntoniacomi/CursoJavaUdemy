@@ -29,4 +29,13 @@ public class SavingsAccount extends Account{
 		// conta com base na taxa de juros
 		balance += balance * interestRate;
 	}
+	
+	// desconta do saldo da conta sem a taxa de 5 pois é conta 
+	// poupança. Como se esta sobrecrevendo um metodo da superclasse, 
+	// usa-se a anotação @overrride
+	@Override
+	public void withdraw(double amount) {
+		balance -= amount;
+	}
+	
 }

@@ -40,7 +40,7 @@ public class Account {
 
 	// saque = descontar do saldo
 	public void withdraw(double amount) {
-		balance -= amount;
+		balance -= amount + 5.0;
 	}
 	
 	// depositar = adicionar ao saldo
