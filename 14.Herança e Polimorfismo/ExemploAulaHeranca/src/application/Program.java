@@ -62,5 +62,21 @@ public class Program {
 		Account acc12 = new BusinessAccount(1003, "Bob", 1000.0, 500.0);
 		acc12.withdraw(200.0);
 		System.out.println(acc12.getBalance()); // saldo será 793 pois além do desconto de 5 da superclasse, desconta mais 2
-	}
+	
+	
+		// EXEMPLOS POLIMORFISMO - chamando mesma operação em variáves
+		// do mesmo tipo (Account) - mas tendo comportamentos diferentes,
+		// conforme os objetos p/ cada um aponta
+		System.out.println("\nEXEMPLOS POLIMORFISMO:");
+		// Conta comum desconta a taxa de saque
+		Account x = new Account(1020, "Alex", 1000.0);
+		// Conta poupança não desconta a taxa de saque
+		Account y = new SavingsAccount(1023, "Maria", 1000.0, 0.01);
+		
+		x.withdraw(50.0);
+		y.withdraw(50.0);
+		
+		System.out.println(x.getBalance());
+		System.out.println(y.getBalance());
+	}	
 }
