@@ -19,7 +19,7 @@
   <li>[x] Tópicos especiais em Java</li>
   <li>[x] BÔNUS - Nivelamento sobre Git e Github</li>
   <li>[x] Enumerações, composição</li>
-  <li>[ ] Herança e polimorfismo</li>
+  <li>[x] Herança e polimorfismo</li>
   <li>[ ] Tratamento de exceções</li>
 </ol>
 
