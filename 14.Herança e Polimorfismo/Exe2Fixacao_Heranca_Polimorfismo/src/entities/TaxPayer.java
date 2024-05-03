@@ -1,5 +1,7 @@
 package entities;
 
+// TaxPayer é a super classe mais genérica, Individual e  
+// Company são as sub classes mais especializadas
 public abstract class TaxPayer {
 	
 	private String name;

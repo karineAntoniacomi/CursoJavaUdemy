@@ -35,20 +35,26 @@ public class Program {
 		Locale.setDefault(Locale.US);			
 		Scanner sc = new Scanner(System.in);
 		
+		// usando tipo genérico na lista ela aceitará 
+		// qualquer tipo das subclasses desta (upcasting)
 		List<TaxPayer> list = new ArrayList<>();
 		
 		System.out.print("Enter the number of tax payers: ");
 		int n = sc.nextInt();	
 		
-		for(int i = 1; i <=n; i++) {			
+		for (int i = 1; i <=n; i++) {			
 			System.out.println("Tax payer #" + i + " data:");
 			
 			// Verifica se o contribuinte é Pessoa Física ou Jurídica
 			System.out.print("Individual or company (i/c)? ");
 			char ch = sc.next().charAt(0);	
 			
-			System.out.print("Name: ");			
-			String name = sc.next();
+			System.out.print("Name: ");
+			// Comando de leitura diferente do nextLine() deixa
+			// quebra de linha pendente na entrada padrão. 
+			// nextLine() absorve essa quebra de linha pendente
+			sc.nextLine();
+			String name = sc.nextLine();
 			
 			System.out.print("Anual income: ");	
 			double anualIncome = sc.nextDouble();	
@@ -56,7 +62,7 @@ public class Program {
 			// Pessoa Física de renda < 20000.00 paga 15% de imposto. 
 			// Renda > 20000.00, paga 25% de imposto. Se houve gastos 
 			// com saúde, 50% destes gastos são abatidos no imposto.
-			if(ch == 'i') {							
+			if (ch == 'i') {							
 				System.out.print("Health expenditures: ");	
 				double healthExpediture = sc.nextDouble();	
 				list.add(new Individual(name, anualIncome, healthExpediture));		
@@ -71,12 +77,18 @@ public class Program {
 			
 		System.out.println("\nTAXES PAID:");
 		
-		Double total = 0.0;
-		for(TaxPayer taxPayer : list) {	
-			System.out.println(taxPayer.getName() + ": $ " + String.format("%.2f", taxPayer.tax()));
-			total += taxPayer.tax();
+		for (TaxPayer taxPayer : list) {	
+			// Polimorfismo: chamada ao método tax irá ter um 
+			// comportamento diferente, determinado em tempo de 
+			// execução, conforme o tipo da istância do objeto. 
+			System.out.println(taxPayer.getName() + ": $ " 
+			+ String.format("%.2f", taxPayer.tax()));
 		}	
 		
+		Double total = 0.0;
+		for (TaxPayer taxPayer : list) {				
+			total += taxPayer.tax();
+		}			
 		System.out.printf("\nTOTAL TAXES: $ %.2f%n", total);
 
 		sc.close();
