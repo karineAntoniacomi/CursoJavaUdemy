@@ -34,10 +34,10 @@ public class Program {
 			System.out.println();			
 			
 			System.out.println("Enter data to update the reservation: ");
-			System.out.print("Check-in date (dd/MM/yyyy)");		
+			System.out.print("Check-in date (dd/MM/yyyy): ");		
 			checkIn = sdf.parse(sc.next());				
 			
-			System.out.print("Check-out date (dd/MM/yyyy)");	
+			System.out.print("Check-out date (dd/MM/yyyy): ");	
 			checkOut = sdf.parse(sc.next());	
 	
 			// Impede que sejam digitadas datas anteriores a data atual (SOLUÇÃO RUIM)
@@ -47,12 +47,12 @@ public class Program {
 			// Verifica se a data de checkout não é posterior ao checkin
 			} else if (!checkOut.after(checkIn)) {
 				System.out.println("Error in reservation: Check-out date must be after check-in date.");
-			}
-			
-			// Atualiza datas			
+			} else {			
+			// Atualiza datas caso não haja nenhum erro			
 			reservation.updateDates(checkIn, checkOut);	
 			System.out.println("Reservation: " + reservation);
-		}		
+			}		
+		}
 		sc.close();
 	}
 }

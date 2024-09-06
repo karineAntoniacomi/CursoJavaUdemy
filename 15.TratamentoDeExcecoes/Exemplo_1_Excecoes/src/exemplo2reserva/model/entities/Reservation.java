@@ -46,7 +46,8 @@ public class Reservation {
 	
 	public void updateDates(Date checkIn, Date checkOut) {		
 		// checkIn do Objeto recebe o checkIn que veio como argumento	
-		this.checkIn = checkIn;		this.checkOut = checkOut;		
+		this.checkIn = checkIn;		
+		this.checkOut = checkOut;		
 	}
 	
 	@Override
