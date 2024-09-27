@@ -10,7 +10,7 @@ public class Program {
 
 	public static void main(String[] args) {
 
-		String path = "C:\\Users\\karin\\AppData\\Local\\Temp\\in.txt";
+		String path = "D:\\Temp\\in.txt";
 
 		try (BufferedReader br = new BufferedReader(new FileReader(path))) {
 			String line = br.readLine(); // lê uma linha do arquivo, se estiver no final retorna nulo

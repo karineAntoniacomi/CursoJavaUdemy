@@ -7,7 +7,7 @@ public class Program {
 
 	public static void main(String[] args) {
 
-		File file = new File("C:\\Users\\karin\\AppData\\Local\\Temp\\in.txt");
+		File file = new File("D:\\Temp\\in.txt");
 		
 		// Ao instanciar o Scanner a partir deste arquivo 
 		// pode ser gerada exceção, por isso colocar em bloco try catch;
